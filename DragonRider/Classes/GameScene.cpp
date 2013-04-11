@@ -20,18 +20,10 @@ bool GameScene::init(){
     //초기화
     hudLayer = HUDLayer::create();
     this-> addChild(hudLayer, 1);
-    
+    //Game 레이어 추가하기
     gameLayer = GameLayer::create();
     this-> addChild(gameLayer, 0);
     
-    /*
-     _hudLayer = [HUDLayer node];
-     [self addChild:_hudLayer z:1];
-     //Game 레이어 추가하기
-     _gameLayer = [GameLayer node];
-     [self addChild:_gameLayer z:0];
-     }
-     */
     
     
     return true;

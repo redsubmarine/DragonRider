@@ -12,7 +12,9 @@
 #include <iostream>
 #include "cocos2d.h"
 
-class HUDLayer : public cocos2d::CCLayer
+NS_CC_BEGIN
+
+class HUDLayer : public CCLayer
 {
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -27,5 +29,7 @@ public:
     //변수와 매서드 선언은 여기에
     
 };
+
+NS_CC_END
 
 #endif /* defined(__DragonRider__HUDLayer__) */

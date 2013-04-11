@@ -12,10 +12,11 @@
 #include <iostream>
 #include "cocos2d.h"
 
+NS_CC_BEGIN
 class HUDLayer;
 class GameLayer;
 
-class GameScene : public cocos2d::CCScene
+class GameScene : public CCScene
 {
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -36,5 +37,5 @@ public:
     
 };
 
-
+NS_CC_END
 #endif /* defined(__DragonRider__GameScene__) */

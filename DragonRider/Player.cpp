@@ -12,7 +12,7 @@ using namespace cocos2d;
 
 
 bool Player::init(){
-    if (!CCSprite::init()) {
+    if (!CCSprite::initWithSpriteFrameName("player.png")) {
         return false;
     }
     //화면의 가운데 아래쪽에 위치시키자

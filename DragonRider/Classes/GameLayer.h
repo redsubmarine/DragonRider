@@ -30,7 +30,6 @@ public:
     
     virtual void update(float delta);
     virtual void onEnter();
-    bool ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 
     //변수와 매서드 선언은 여기에
     

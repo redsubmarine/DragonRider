@@ -72,26 +72,37 @@ void GameLayer::update(float delta){
 void GameLayer::onEnter()
 {
     CCLayer::onEnter();
-    this->scheduleUpdate();
-	
+    //터치 이벤트를 받는다.
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    //배경 움직임과 충돌을 체크할때 사용하는 메인 스케쥴
+    this->scheduleUpdate();
 }
-
-
-
-
-
 
 
 
 bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCLog("TouchBegan");
+    //터치가 시작되면 이전 값과 비교를 위해 저장한다. UI좌표계를 cocos 좌표계로 변환
+    previousPoint = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
+//    previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 	return true;
 }
 void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCLog("ccTouchMoved");
+    //이전 값과 비교를 위한 움직였을때 위치 값. UI좌표계를 cocos 좌표계로 변환
+    CCPoint location = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
+    //플레이어 케릭터의 위치를 ( 기존 위치 X축 값 - 움직인 거리 ), Y축 값은 동일
+    player->setPosition(ccp(player->getPosition().x- (previousPoint.x-location.x)*2,
+                            player->getPosition().y));
+
+    //왼쪽이나 오른쪽으로 벗어나면 넘어가지 않도록 고정 시킨다.
+    if (player->getPosition().x<0) {
+        player->setPosition(ccp(0, player->getPosition().y));
+    }else if (player->getPosition().x>winSize.width){
+        player->setPosition(ccp(winSize.width, player->getPosition().y));
+    }
+    //현재 위치를 이전 값으로 저장한다.
+    previousPoint = location;
 }
 void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
