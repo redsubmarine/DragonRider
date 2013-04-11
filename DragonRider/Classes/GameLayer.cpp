@@ -69,15 +69,38 @@ void GameLayer::update(float delta){
     }
 }
 
-void GameLayer::onEnter(){
+void GameLayer::onEnter()
+{
     CCLayer::onEnter();
     this->scheduleUpdate();
+	
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 
 
 
 
+
+
+
+bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+{
+	CCLog("TouchBegan");
+	return true;
+}
+void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+{
+	CCLog("ccTouchMoved");
+}
+void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
+{
+	CCLog("ccTouchEnded");
+}
+void GameLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
+{
+	CCLog("ccTouchCancelled");
+}
 
 
 
