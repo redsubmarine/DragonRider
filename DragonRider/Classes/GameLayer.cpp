@@ -21,13 +21,13 @@ bool GameLayer::init(){
     //초기화
     winSize = CCDirector::sharedDirector()->getWinSize();
     this->initBackground();
-
+    
     //마지막 총알 번호를 위해 초기화
     lastBullet = 0;
     //총알등을 위해 배치노드 사용
     batchNode = CCSpriteBatchNode::create("dragonRiderSprite.pvr");
     this->addChild(batchNode);
-
+    
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("dragonRiderSprite.plist");
     
     this->initPlayer();
@@ -35,7 +35,7 @@ bool GameLayer::init(){
     this->initBullets();
     
     
-
+    
     return true;
 }
 
@@ -46,7 +46,7 @@ void GameLayer::initBackground(){
     
     backgroundImage2 = CCSprite::create("01.png");
     backgroundImage2->setAnchorPoint(CCPointZero);
-
+    
     backgroundImage2->setPosition(ccp(0, backgroundImage2->boundingBox().size.height));
     this->addChild(backgroundImage2, -1);
     
@@ -55,10 +55,10 @@ void GameLayer::initBackground(){
 void GameLayer::initPlayer(){
     //플레이어 케릭터를 생성한다.
     player = Player::create();
-
+    
     //가장 위에 위치 시킨다.
     this->addChild(player, 99);
-
+    
 }
 
 #define kMaxMonster 5 //기본 적의 수는 5마리
@@ -73,7 +73,7 @@ void GameLayer::initEnemys(){
         enemy->setPosition(ccp(i*width+width/2, winSize.height +enemy->boundingBox().size.height/2));
         enemysArray->addObject(enemy);
     }
-
+    
 }
 #define kMaxBullets 30
 void GameLayer::initBullets(){
@@ -92,14 +92,14 @@ void GameLayer::initBullets(){
 
 
 void GameLayer::update(float delta){
-
-     // 배경화면 움직이는 속도, 현재 위치에 이동할 위치를 ccpAdd로 더하는 방식
+    
+    // 배경화면 움직이는 속도, 현재 위치에 이동할 위치를 ccpAdd로 더하는 방식
     CCPoint backgroundScrollVel = ccp(0, -100);
     
-     // 현재 이미지1의 위치 값을 불러온다.
+    // 현재 이미지1의 위치 값을 불러온다.
     CCPoint currentPos = backgroundImage1->getPosition();
     
-     // 1번 이미지가 스크롤 되서 사라지고, 2번 이지미가 1번 이미지의 초기 위치에 오면 최초위치로 이동
+    // 1번 이미지가 스크롤 되서 사라지고, 2번 이지미가 1번 이미지의 초기 위치에 오면 최초위치로 이동
     if (currentPos.y < - winSize.height) {
         backgroundImage1->setPosition(CCPointZero);
         currentPos = ccp(0, backgroundImage2->boundingBox().size.height);
@@ -107,6 +107,47 @@ void GameLayer::update(float delta){
     }else{
         backgroundImage1->setPosition(ccpAdd(ccpMult(backgroundScrollVel, delta), backgroundImage1->getPosition()));
         backgroundImage2->setPosition(ccpAdd(ccpMult(backgroundScrollVel, delta), backgroundImage2->getPosition()));
+    }
+    
+    //플레이어와 캐릭터 충돌을 위해 배열에서 적을 하나 꺼낸다.
+    Enemy *enemy = NULL;
+    CCARRAY_FOREACH(enemysArray, enemy)
+    {
+        if (!enemy->state) {
+            continue;
+        }
+        //총알을 하나 배열에서 꺼낸다
+        Bullet *bullet = NULL;
+        CCARRAY_FOREACH(bulletsArray, bullet){
+            //총알이 없어진 상태면 그냥 넘어간다.
+            if (!bullet->isVisible()) {
+                continue;
+            }
+            //총알과 적이 충돌나는지 체크
+            if (!isCollision && bullet->boundingBox().intersectsRect(enemy->boundingBox())) {
+                //총알을 없애고,
+                bullet->setVisible(false);
+                if (!enemy->attackedWithPoint(bullet->bulletType)) {
+                    //싸운드 효과를 재생한다.
+                    //적이 폭파되면 먼지 뿌려주는 애니메이션
+                }
+            }
+        }
+        //적과 플레이어가 충돌나는지 체크
+        if (!isCollision && enemy->boundingBox().intersectsRect(player->boundingBox())) {
+            isCollision = true;
+            
+            player->setVisible(false);
+            this->unschedule(schedule_selector(GameLayer::updateBullet));
+            Bullet *bullet = NULL;
+            CCARRAY_FOREACH(bulletsArray, bullet){
+                bullet->setVisible(false);
+                bullet->removeFromParentAndCleanup(true);
+            }
+            
+            
+        }
+        
     }
 }
 
@@ -141,7 +182,7 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     //터치가 시작되면 이전 값과 비교를 위해 저장한다. UI좌표계를 cocos 좌표계로 변환
     previousPoint = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
-//    previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+    //    previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 	return true;
 }
 void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
@@ -151,7 +192,7 @@ void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     //플레이어 케릭터의 위치를 ( 기존 위치 X축 값 - 움직인 거리 ), Y축 값은 동일
     player->setPosition(ccp(player->getPosition().x- (previousPoint.x-location.x)*2,
                             player->getPosition().y));
-
+    
     //왼쪽이나 오른쪽으로 벗어나면 넘어가지 않도록 고정 시킨다.
     if (player->getPosition().x<0) {
         player->setPosition(ccp(0, player->getPosition().y));
@@ -163,7 +204,7 @@ void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 }
 void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
-
+    
 }
 void GameLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {

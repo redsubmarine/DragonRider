@@ -47,6 +47,8 @@ public:
     CCArray *bulletsArray;
     //마지막 총알 확인용
     int lastBullet;
+    //충돌했는지 체크용
+    bool isCollision;
     
     CCSpriteBatchNode *batchNode;
     
