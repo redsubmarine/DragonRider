@@ -229,6 +229,7 @@
 		F2F61AC91716B86000DF6B64 /* dragonRiderSprite.pvr in Resources */ = {isa = PBXBuildFile; fileRef = F2F61AC71716B86000DF6B64 /* dragonRiderSprite.pvr */; };
 		F2F61ACC1716B96900DF6B64 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F61ACA1716B96900DF6B64 /* Player.cpp */; };
 		F2F61AD11716E50200DF6B64 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F61ACF1716E50100DF6B64 /* Enemy.cpp */; };
+		F2F61AD41717128100DF6B64 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F61AD21717128100DF6B64 /* Bullet.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -713,6 +714,8 @@
 		F2F61ACB1716B96900DF6B64 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		F2F61ACF1716E50100DF6B64 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		F2F61AD01716E50100DF6B64 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		F2F61AD21717128100DF6B64 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		F2F61AD31717128100DF6B64 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1727,6 +1730,8 @@
 				F2F61ACA1716B96900DF6B64 /* Player.cpp */,
 				F2F61AD01716E50100DF6B64 /* Enemy.h */,
 				F2F61ACF1716E50100DF6B64 /* Enemy.cpp */,
+				F2F61AD31717128100DF6B64 /* Bullet.h */,
+				F2F61AD21717128100DF6B64 /* Bullet.cpp */,
 				F2F61AAE1716A35400DF6B64 /* GameScene.h */,
 				F2F61AAD1716A35400DF6B64 /* GameScene.cpp */,
 				F2F61ABE1716A81000DF6B64 /* HUDLayer.h */,
@@ -2007,6 +2012,7 @@
 				F2F61AC31716A81100DF6B64 /* MenuLayer.cpp in Sources */,
 				F2F61ACC1716B96900DF6B64 /* Player.cpp in Sources */,
 				F2F61AD11716E50200DF6B64 /* Enemy.cpp in Sources */,
+				F2F61AD41717128100DF6B64 /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

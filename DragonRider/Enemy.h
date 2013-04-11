@@ -9,7 +9,6 @@
 #ifndef __DragonRider__Enemy__
 #define __DragonRider__Enemy__
 
-#include <iostream>
 #include "cocos2d.h"
 //두종류의 적
 typedef enum {

@@ -9,6 +9,8 @@
 #include "GameLayer.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Bullet.h"
+
 using namespace cocos2d;
 
 bool GameLayer::init(){
@@ -19,11 +21,21 @@ bool GameLayer::init(){
     //초기화
     winSize = CCDirector::sharedDirector()->getWinSize();
     this->initBackground();
-    
+
+    //마지막 총알 번호를 위해 초기화
+    lastBullet = 0;
+    //총알등을 위해 배치노드 사용
+    batchNode = CCSpriteBatchNode::create("dragonRiderSprite.pvr");
+    this->addChild(batchNode);
+
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("dragonRiderSprite.plist");
     
     this->initPlayer();
     this->initEnemys();
+    this->initBullets();
+    
+    
+
     return true;
 }
 
@@ -63,6 +75,21 @@ void GameLayer::initEnemys(){
     }
 
 }
+#define kMaxBullets 30
+void GameLayer::initBullets(){
+    //총알 갯수만큼 배열을 만든다.
+    bulletsArray = new CCArray;//CCArray::createWithCapacity(kMaxBullets);
+    //총알 갯수만큼 배열에 넣는다.
+    for (int i = 0; i < kMaxBullets; i++) {
+        //총알 노드 생성
+        Bullet *bullet = Bullet::create();
+        bullet->setVisible(false);
+        bullet->setPosition(ccp(player->getPosition().x, player->getPosition().y+ player->boundingBox().size.height));
+        batchNode->addChild(bullet, 99);
+        bulletsArray->addObject(bullet);
+    }
+}
+
 
 void GameLayer::update(float delta){
 
@@ -83,6 +110,19 @@ void GameLayer::update(float delta){
     }
 }
 
+void GameLayer::updateBullet(float deltaTime){
+    //배열에서 하나씩 총알을 꺼낸다.
+    Bullet *bullet = (Bullet *) bulletsArray->objectAtIndex(lastBullet);
+    //움직일때는 보이게 설정
+    bullet->setVisible(true);
+    //총알의 위치는 플레이어 캐릭터의 앞에 위치
+    bullet->setPosition(ccp(player->getPosition().x, player->getPosition().y + player->boundingBox().size.height/2));
+    //마지막 총알이 배열의 마지막이면 다시 초기화
+    if (++lastBullet == kMaxBullets) {
+        lastBullet = 0;
+    }
+}
+
 void GameLayer::onEnter()
 {
     CCLayer::onEnter();
@@ -90,6 +130,9 @@ void GameLayer::onEnter()
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     //배경 움직임과 충돌을 체크할때 사용하는 메인 스케쥴
     this->scheduleUpdate();
+    //스케줄을 통해 updateBullet 호출
+    this->schedule(schedule_selector(GameLayer::updateBullet), 0.05f);
+    
 }
 
 

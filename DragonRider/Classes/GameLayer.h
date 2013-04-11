@@ -15,7 +15,7 @@
 using namespace cocos2d;
 
 NS_CC_BEGIN
-
+class Bullet;
 class GameLayer : public CCLayer
 {
 public:
@@ -29,6 +29,7 @@ public:
     CREATE_FUNC(GameLayer);
     
     virtual void update(float delta);
+    virtual void updateBullet(float deltaTime);
     virtual void onEnter();
 
     //변수와 매서드 선언은 여기에
@@ -42,13 +43,19 @@ public:
     CCSprite *player;
     //적을 저장할 array
     CCArray *enemysArray;
+    //총알을 담을 array
+    CCArray *bulletsArray;
+    //마지막 총알 확인용
+    int lastBullet;
+    
+    CCSpriteBatchNode *batchNode;
     
     
     void initBackground();
 
     void initPlayer();
 	void initEnemys();
-	
+    void initBullets();
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
