@@ -2077,6 +2077,7 @@
 				GCC_PREFIX_HEADER = DragonRider/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = DragonRider/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DragonRider/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2100,6 +2101,7 @@
 				GCC_PREFIX_HEADER = DragonRider/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = DragonRider/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DragonRider/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2134,6 +2136,7 @@
 				F2F61AA91716A0ED00DF6B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
