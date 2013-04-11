@@ -2077,7 +2077,7 @@
 				GCC_PREFIX_HEADER = DragonRider/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = DragonRider/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DragonRider/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2101,7 +2101,11 @@
 				GCC_PREFIX_HEADER = DragonRider/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = DragonRider/Resources/Info.plist;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+>>>>>>> d7691b4c6d9c60cf62d2a625f2af45a4dc96f7ce
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DragonRider/libs/cocos2dx/platform/third_party/ios/libraries\"",
