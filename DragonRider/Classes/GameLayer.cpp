@@ -8,7 +8,7 @@
 
 #include "GameLayer.h"
 #include "Player.h"
-
+#include "Enemy.h"
 using namespace cocos2d;
 
 bool GameLayer::init(){
@@ -23,7 +23,7 @@ bool GameLayer::init(){
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("dragonRiderSprite.plist");
     
     this->initPlayer();
-    
+    this->initEnemys();
     return true;
 }
 
@@ -49,6 +49,20 @@ void GameLayer::initPlayer(){
 
 }
 
+#define kMaxMonster 5 //기본 적의 수는 5마리
+
+void GameLayer::initEnemys(){
+    //적을 저장할 배열을 생성한다.
+    enemysArray = CCArray::createWithCapacity(kMaxMonster);
+    float width = winSize.width/kMaxMonster;
+    for (int i=0; i<kMaxMonster; i++) {
+        Enemy *enemy = Enemy::create();
+        this->addChild(enemy, 98);
+        enemy->setPosition(ccp(i*width+width/2, winSize.height +enemy->boundingBox().size.height/2));
+        enemysArray->addObject(enemy);
+    }
+
+}
 
 void GameLayer::update(float delta){
 
@@ -106,7 +120,7 @@ void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 }
 void GameLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCLog("ccTouchEnded");
+
 }
 void GameLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {

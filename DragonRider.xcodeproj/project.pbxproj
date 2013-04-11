@@ -228,6 +228,7 @@
 		F2F61AC81716B86000DF6B64 /* dragonRiderSprite.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2F61AC61716B86000DF6B64 /* dragonRiderSprite.plist */; };
 		F2F61AC91716B86000DF6B64 /* dragonRiderSprite.pvr in Resources */ = {isa = PBXBuildFile; fileRef = F2F61AC71716B86000DF6B64 /* dragonRiderSprite.pvr */; };
 		F2F61ACC1716B96900DF6B64 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F61ACA1716B96900DF6B64 /* Player.cpp */; };
+		F2F61AD11716E50200DF6B64 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F61ACF1716E50100DF6B64 /* Enemy.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -710,6 +711,8 @@
 		F2F61AC71716B86000DF6B64 /* dragonRiderSprite.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = dragonRiderSprite.pvr; path = Resources/dragonRiderSprite.pvr; sourceTree = "<group>"; };
 		F2F61ACA1716B96900DF6B64 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		F2F61ACB1716B96900DF6B64 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		F2F61ACF1716E50100DF6B64 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		F2F61AD01716E50100DF6B64 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1722,6 +1725,8 @@
 				F2F61ABB1716A81000DF6B64 /* GameLayer.cpp */,
 				F2F61ACB1716B96900DF6B64 /* Player.h */,
 				F2F61ACA1716B96900DF6B64 /* Player.cpp */,
+				F2F61AD01716E50100DF6B64 /* Enemy.h */,
+				F2F61ACF1716E50100DF6B64 /* Enemy.cpp */,
 				F2F61AAE1716A35400DF6B64 /* GameScene.h */,
 				F2F61AAD1716A35400DF6B64 /* GameScene.cpp */,
 				F2F61ABE1716A81000DF6B64 /* HUDLayer.h */,
@@ -2001,6 +2006,7 @@
 				F2F61AC21716A81100DF6B64 /* HUDLayer.cpp in Sources */,
 				F2F61AC31716A81100DF6B64 /* MenuLayer.cpp in Sources */,
 				F2F61ACC1716B96900DF6B64 /* Player.cpp in Sources */,
+				F2F61AD11716E50200DF6B64 /* Enemy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2101,11 +2107,7 @@
 				GCC_PREFIX_HEADER = DragonRider/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = DragonRider/Resources/Info.plist;
-<<<<<<< HEAD
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-=======
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
->>>>>>> d7691b4c6d9c60cf62d2a625f2af45a4dc96f7ce
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DragonRider/libs/cocos2dx/platform/third_party/ios/libraries\"",

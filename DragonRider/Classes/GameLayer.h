@@ -40,13 +40,14 @@ public:
     CCSprite *backgroundImage2;
     
     CCSprite *player;
-    
+    //적을 저장할 array
+    CCArray *enemysArray;
     
     
     void initBackground();
 
     void initPlayer();
-	
+	void initEnemys();
 	
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
