@@ -14,8 +14,9 @@
 
 using namespace cocos2d;
 
+NS_CC_BEGIN
 
-class GameLayer : public cocos2d::CCLayer
+class GameLayer : public CCLayer
 {
 public:
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -42,8 +43,16 @@ public:
     void initBackground();
 
     void initPlayer();
-    
+	
+	
+	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+	
+	
 };
 
+NS_CC_END
 
 #endif /* defined(__DragonRider__GameLayer__) */
