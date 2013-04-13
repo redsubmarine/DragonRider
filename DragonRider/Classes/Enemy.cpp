@@ -74,6 +74,9 @@ void Enemy::reset(){
     this->setVisible(true);
     state = kNormal;
     this->setPosition(ccp( this->getPosition().x, winSize.height + this->boundingBox().size.height / 2 - 1 ));
+	this->setVisible(true);
+	
+    state = kNormal;
     //적의 이미지를 바꿔주기 위해 랜덤 값 생성
     int random = ( (float)arc4random() / (float)0xffffffff ) * kMaxEnemyType;
     
@@ -112,7 +115,7 @@ void Enemy::onEnter(){
 
 int Enemy::attackedWithPoint(int point){
     //공격받은 숫자만큼 에너지를 줄인다.
-    energy -=point;
+    energy -= point;
     //0 미만이 되면 0을, 아니면 현재 에너지를 반환
     if (energy<=0) {
         //죽으면 숨긴다
