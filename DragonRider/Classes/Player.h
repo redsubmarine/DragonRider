@@ -14,15 +14,19 @@
 class Player : public::cocos2d::CCSprite {
 
     virtual bool init();
-
+    virtual void onEnter();
     
     
 public:
     CREATE_FUNC(Player);
+    
     //변수
     CCSprite *leftWing;
     CCSprite *rightWing;
     
+    bool wingDown;
+    
+    void updateWings(float deltaTime);
 };
 
 #endif /* defined(__DragonRider__Player__) */

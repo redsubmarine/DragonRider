@@ -120,6 +120,8 @@ void Enemy::reset(){
 void Enemy::onEnter(){
     CCSprite::onEnter();
     this->scheduleUpdate();
+    //날개짓을 위한 0.2초마다 매소드 호출
+    this->schedule(schedule_selector(Enemy::updateWings), 0.2);
 }
 
 int Enemy::attackedWithPoint(int point){
@@ -147,3 +149,34 @@ void Enemy::destroy(){
     //그리고 숨긴다.
     this->setVisible(false);
 }
+
+void Enemy::updateWings(float deltaTime){
+    //왼쪽 오른쪽 날개짓을 위한 회전
+    CCRotateTo *leftWingDown = CCRotateTo::create(0.2, -80);
+    CCRotateTo *leftWingUp = CCRotateTo::create(0.2, 0);
+    CCRotateTo *rightWingDown = CCRotateTo::create(0.2, 80);
+    CCRotateTo *rightWingUp = CCRotateTo::create(0.2, 0);
+    
+    //번갈아 가면서 날개짓을 한다.
+    if ((wingDown = !wingDown)) {
+        leftWing->runAction(leftWingDown);
+        rightWing->runAction(rightWingDown);
+    }else{
+        leftWing->runAction(leftWingUp);
+        rightWing->runAction(rightWingUp);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

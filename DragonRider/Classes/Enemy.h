@@ -48,6 +48,7 @@ public:
     void reset();
     int attackedWithPoint(int point);
     void destroy();
+    void updateWings(float deltaTime);
 };
 
 NS_CC_END

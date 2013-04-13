@@ -34,3 +34,35 @@ bool Player::init(){
     
     return true;
 }
+
+void Player::updateWings(float deltaTime){
+    //왼쪽 날개 애니메이션을 위한 날개 내렸다 올리기
+    CCRotateTo *leftWingDown = CCRotateTo::create(0.2, -30, 60);
+    CCRotateTo *leftWingUp = CCRotateTo::create(0.2, 0, 0);
+    //오른쪽 날개 애니메이션을 위한 날개 내렸다 올리기
+    CCRotateTo *rightWingDown = CCRotateTo::create(0.2, 30, -60);
+    CCRotateTo *rightWingUp = CCRotateTo::create(0.2, 0, 0);
+    
+    //번갈아 가면서 날개짓을 한다.
+    if ((wingDown = !wingDown)) {
+        leftWing->runAction(leftWingDown);
+        rightWing->runAction(rightWingDown);
+    }else{
+        leftWing->runAction(leftWingUp);
+        rightWing->runAction(rightWingUp);
+    }
+}
+
+void Player::onEnter(){
+    CCSprite::onEnter();
+    this->schedule(schedule_selector(Player::updateWings), 0.2);
+}
+
+
+
+
+
+
+
+
+
