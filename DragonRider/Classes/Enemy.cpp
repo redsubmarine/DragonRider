@@ -71,6 +71,8 @@ void Enemy::update(float delta){
 void Enemy::reset(){
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     //적의 위치를 화면 상단으로 부터 시작한다.
+    this->setVisible(true);
+    state = kNormal;
     this->setPosition(ccp( this->getPosition().x, winSize.height + this->boundingBox().size.height / 2 - 1 ));
     //적의 이미지를 바꿔주기 위해 랜덤 값 생성
     int random = ( (float)arc4random() / (float)0xffffffff ) * kMaxEnemyType;

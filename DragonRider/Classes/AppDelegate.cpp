@@ -33,9 +33,14 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
-
+    
     // set FPS. the default value is 1.0/60 if you don't call this
+#if TARGET_IPHONE_SIMULATOR
+    pDirector->setAnimationInterval(1.0 / 30);
+#else
     pDirector->setAnimationInterval(1.0 / 60);
+#endif
+    
 
     // create a scene. it's an autorelease object
     CCScene *pScene = MenuLayer::scene();

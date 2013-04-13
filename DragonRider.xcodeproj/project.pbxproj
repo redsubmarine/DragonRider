@@ -10,6 +10,7 @@
 		F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F617174506001293A3 /* Bullet.cpp */; };
 		F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F817174506001293A3 /* Enemy.cpp */; };
 		F2B5D6FE17174506001293A3 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6FA17174506001293A3 /* Player.cpp */; };
+		F2D39451171942FB00DD0F6E /* EnergyGauge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2D3944F171942FB00DD0F6E /* EnergyGauge.cpp */; };
 		F2F617C11716A0E900DF6B64 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F617C01716A0E900DF6B64 /* QuartzCore.framework */; };
 		F2F617C31716A0E900DF6B64 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F617C21716A0E900DF6B64 /* OpenGLES.framework */; };
 		F2F617C51716A0E900DF6B64 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F617C41716A0E900DF6B64 /* OpenAL.framework */; };
@@ -239,6 +240,8 @@
 		F2B5D6F917174506001293A3 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Enemy.h; sourceTree = "<group>"; };
 		F2B5D6FA17174506001293A3 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
 		F2B5D6FB17174506001293A3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Classes/Player.h; sourceTree = "<group>"; };
+		F2D3944F171942FB00DD0F6E /* EnergyGauge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnergyGauge.cpp; path = Classes/EnergyGauge.cpp; sourceTree = "<group>"; };
+		F2D39450171942FB00DD0F6E /* EnergyGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnergyGauge.h; path = Classes/EnergyGauge.h; sourceTree = "<group>"; };
 		F2F617BD1716A0E900DF6B64 /* DragonRider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonRider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F617C01716A0E900DF6B64 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2F617C21716A0E900DF6B64 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1730,6 +1733,8 @@
 				F2B5D6FA17174506001293A3 /* Player.cpp */,
 				F2B5D6F917174506001293A3 /* Enemy.h */,
 				F2B5D6F817174506001293A3 /* Enemy.cpp */,
+				F2D39450171942FB00DD0F6E /* EnergyGauge.h */,
+				F2D3944F171942FB00DD0F6E /* EnergyGauge.cpp */,
 				F2B5D6F717174506001293A3 /* Bullet.h */,
 				F2B5D6F617174506001293A3 /* Bullet.cpp */,
 				F2F61AAE1716A35400DF6B64 /* GameScene.h */,
@@ -2013,6 +2018,7 @@
 				F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */,
 				F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */,
 				F2B5D6FE17174506001293A3 /* Player.cpp in Sources */,
+				F2D39451171942FB00DD0F6E /* EnergyGauge.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
