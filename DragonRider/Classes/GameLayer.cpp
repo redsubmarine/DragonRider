@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include "MenuLayer.h"
 
 using namespace cocos2d;
 
@@ -65,7 +66,7 @@ void GameLayer::initPlayer(){
 
 void GameLayer::initEnemys(){
     //적을 저장할 배열을 생성한다.
-    enemysArray = CCArray::createWithCapacity(kMaxMonster);
+    enemysArray = new CCArray; //CCArray::createWithCapacity(kMaxMonster);
     float width = winSize.width/kMaxMonster;
     for (int i=0; i<kMaxMonster; i++) {
         Enemy *enemy = Enemy::create();
@@ -108,17 +109,20 @@ void GameLayer::update(float delta){
         backgroundImage1->setPosition(ccpAdd(ccpMult(backgroundScrollVel, delta), backgroundImage1->getPosition()));
         backgroundImage2->setPosition(ccpAdd(ccpMult(backgroundScrollVel, delta), backgroundImage2->getPosition()));
     }
-    
+#pragma mark - 여기가 일단 문제
     //플레이어와 캐릭터 충돌을 위해 배열에서 적을 하나 꺼낸다.
-    Enemy *enemy = NULL;
-    CCARRAY_FOREACH(enemysArray, enemy)
+    CCObject *object;
+    CCARRAY_FOREACH(enemysArray, object)
     {
+        Enemy *enemy = dynamic_cast<Enemy*>(object);
+        
         if (!enemy->state) {
             continue;
         }
         //총알을 하나 배열에서 꺼낸다
-        Bullet *bullet = NULL;
-        CCARRAY_FOREACH(bulletsArray, bullet){
+        CCObject *obj;
+        CCARRAY_FOREACH(bulletsArray, obj){
+            Bullet *bullet = dynamic_cast<Bullet *>(obj);
             //총알이 없어진 상태면 그냥 넘어간다.
             if (!bullet->isVisible()) {
                 continue;
@@ -136,20 +140,39 @@ void GameLayer::update(float delta){
         //적과 플레이어가 충돌나는지 체크
         if (!isCollision && enemy->boundingBox().intersectsRect(player->boundingBox())) {
             isCollision = true;
-            
             player->setVisible(false);
+            //충돌하게되면 총알을 다 없앤다
             this->unschedule(schedule_selector(GameLayer::updateBullet));
-            Bullet *bullet = NULL;
-            CCARRAY_FOREACH(bulletsArray, bullet){
+            CCObject *object;
+            CCARRAY_FOREACH(bulletsArray, object){
+                Bullet *bullet = dynamic_cast<Bullet *>(object);
                 bullet->setVisible(false);
                 bullet->removeFromParentAndCleanup(true);
             }
             
+#pragma mark - 아직 문제 있는지 테스트를 못해봄
+            //딜레이를 위한 엑션
+            CCDelayTime *delay = CCDelayTime::create(2.0f);//[CCDelayTime actionWithDuration:2.0f];
+
+            CCCallFunc *allStop = CCCallFunc::create(this, callfunc_selector(GameLayer::allStop));
             
+            CCCallFunc *block = CCCallFunc::create(this, callfunc_selector(GameLayer::block));
+            
+            //엑션을 순서대로 준비.
+            CCSequence *seq = CCSequence::create(allStop, delay, block, NULL);
+            //엑션 실행
+            this->runAction(seq);
         }
-        
     }
 }
+
+void GameLayer::allStop(){
+    this->setTouchEnabled(false);
+}
+void GameLayer::block(){
+    CCDirector::sharedDirector()-> replaceScene(MenuLayer::scene());
+}
+
 
 void GameLayer::updateBullet(float deltaTime){
     //배열에서 하나씩 총알을 꺼낸다.

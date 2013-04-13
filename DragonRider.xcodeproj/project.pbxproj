@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F2B5D6F5171744F5001293A3 /* CCCallBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F3171744F5001293A3 /* CCCallBlock.cpp */; };
 		F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F617174506001293A3 /* Bullet.cpp */; };
 		F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F817174506001293A3 /* Enemy.cpp */; };
 		F2B5D6FE17174506001293A3 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6FA17174506001293A3 /* Player.cpp */; };
@@ -234,8 +233,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F2B5D6F3171744F5001293A3 /* CCCallBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCCallBlock.cpp; path = Classes/CCCallBlock.cpp; sourceTree = "<group>"; };
-		F2B5D6F4171744F5001293A3 /* CCCallBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCCallBlock.h; path = Classes/CCCallBlock.h; sourceTree = "<group>"; };
 		F2B5D6F617174506001293A3 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = Classes/Bullet.cpp; sourceTree = "<group>"; };
 		F2B5D6F717174506001293A3 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = Classes/Bullet.h; sourceTree = "<group>"; };
 		F2B5D6F817174506001293A3 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Enemy.cpp; sourceTree = "<group>"; };
@@ -1723,8 +1720,6 @@
 		F2F61A9E1716A0ED00DF6B64 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F2B5D6F3171744F5001293A3 /* CCCallBlock.cpp */,
-				F2B5D6F4171744F5001293A3 /* CCCallBlock.h */,
 				F2F61A9F1716A0ED00DF6B64 /* AppDelegate.h */,
 				F2F61AA01716A0ED00DF6B64 /* AppDelegate.cpp */,
 				F2F61AC01716A81100DF6B64 /* MenuLayer.h */,
@@ -2015,7 +2010,6 @@
 				F2F61AC11716A81100DF6B64 /* GameLayer.cpp in Sources */,
 				F2F61AC21716A81100DF6B64 /* HUDLayer.cpp in Sources */,
 				F2F61AC31716A81100DF6B64 /* MenuLayer.cpp in Sources */,
-				F2B5D6F5171744F5001293A3 /* CCCallBlock.cpp in Sources */,
 				F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */,
 				F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */,
 				F2B5D6FE17174506001293A3 /* Player.cpp in Sources */,

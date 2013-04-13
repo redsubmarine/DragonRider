@@ -62,7 +62,10 @@ public:
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
-	
+
+    //CCCallBlock 대용
+	void allStop(); //터치이벤트를 더이상 받지 않는다.
+    void block();   //메뉴 레이어로 돌아간다.
 	
 };
 
