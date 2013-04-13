@@ -9,31 +9,18 @@
 #ifndef __DragonRider__GameLayer__
 #define __DragonRider__GameLayer__
 
-#include <iostream>
+
 #include "cocos2d.h"
 
 using namespace cocos2d;
 
 NS_CC_BEGIN
 class Bullet;
+class HUDLayer;
 class GameLayer : public CCLayer
 {
-public:
-    // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
-    virtual bool init();
     
-    // there's no 'id' in cpp, so we recommend to return the class instance pointer
-    static cocos2d::CCScene* scene();
-    
-    // preprocessor macro for "static create()" constructor ( node() deprecated )
-    CREATE_FUNC(GameLayer);
-    ~GameLayer();
-    
-    virtual void update(float delta);
-    virtual void updateBullet(float deltaTime);
-    virtual void onEnter();
-
-    //변수와 매서드 선언은 여기에
+    //변수
     
     CCSize winSize;
     CCPoint previousPoint;
@@ -52,7 +39,31 @@ public:
     bool isCollision;
     
     CCSpriteBatchNode *batchNode;
+    //점수 저장용 변수
+    int score;
+
     
+public:
+    
+    //HUD
+    HUDLayer *hud;
+    
+    // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
+    virtual bool init();
+    
+    // there's no 'id' in cpp, so we recommend to return the class instance pointer
+    static cocos2d::CCScene* scene();
+    
+    // preprocessor macro for "static create()" constructor ( node() deprecated )
+    CREATE_FUNC(GameLayer);
+    ~GameLayer();
+    
+    virtual void update(float delta);
+    void updateBullet(float deltaTime);
+    void updateScore(float deltaTime);
+    
+    virtual void onEnter();
+    //매서드
     
     void initBackground();
 

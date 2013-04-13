@@ -1729,6 +1729,8 @@
 				F2F61ABF1716A81100DF6B64 /* MenuLayer.cpp */,
 				F2F61ABC1716A81000DF6B64 /* GameLayer.h */,
 				F2F61ABB1716A81000DF6B64 /* GameLayer.cpp */,
+				F2F61ABE1716A81000DF6B64 /* HUDLayer.h */,
+				F2F61ABD1716A81000DF6B64 /* HUDLayer.cpp */,
 				F2B5D6FB17174506001293A3 /* Player.h */,
 				F2B5D6FA17174506001293A3 /* Player.cpp */,
 				F2B5D6F917174506001293A3 /* Enemy.h */,
@@ -1739,8 +1741,6 @@
 				F2B5D6F617174506001293A3 /* Bullet.cpp */,
 				F2F61AAE1716A35400DF6B64 /* GameScene.h */,
 				F2F61AAD1716A35400DF6B64 /* GameScene.cpp */,
-				F2F61ABE1716A81000DF6B64 /* HUDLayer.h */,
-				F2F61ABD1716A81000DF6B64 /* HUDLayer.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "MenuLayer.h"
+#include "HUDLayer.h"
 
 using namespace cocos2d;
 
@@ -34,7 +35,7 @@ bool GameLayer::init(){
     this->initPlayer();
     this->initEnemys();
     this->initBullets();
-    
+    score = 0;
     
     
     return true;
@@ -198,6 +199,10 @@ void GameLayer::updateBullet(float deltaTime){
     }
 }
 
+void GameLayer::updateScore(float deltaTime){
+    hud->setScoreText(score++);
+}
+
 void GameLayer::onEnter()
 {
     CCLayer::onEnter();
@@ -207,6 +212,8 @@ void GameLayer::onEnter()
     this->scheduleUpdate();
     //스케줄을 통해 updateBullet 호출
     this->schedule(schedule_selector(GameLayer::updateBullet), 0.05f);
+    //점수를 위한 스케쥴
+    this->schedule(schedule_selector(GameLayer::updateScore), 0.01f);
     
 }
 

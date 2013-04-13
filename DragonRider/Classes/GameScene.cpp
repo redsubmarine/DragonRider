@@ -24,7 +24,7 @@ bool GameScene::init(){
     gameLayer = GameLayer::create();
     this-> addChild(gameLayer, 0);
     
-    
+    this->gameLayer->hud = hudLayer;
     
     return true;
 }
