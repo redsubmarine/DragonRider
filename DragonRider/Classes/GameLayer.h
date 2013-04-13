@@ -27,6 +27,7 @@ public:
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(GameLayer);
+    ~GameLayer();
     
     virtual void update(float delta);
     virtual void updateBullet(float deltaTime);

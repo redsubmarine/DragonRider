@@ -40,6 +40,11 @@ bool GameLayer::init(){
     return true;
 }
 
+GameLayer::~GameLayer(){
+    CC_SAFE_RELEASE(bulletsArray);
+    CC_SAFE_RELEASE(enemysArray);
+}
+
 void GameLayer::initBackground(){
     backgroundImage1 = CCSprite::create("01.png");
     backgroundImage1->setAnchorPoint(CCPointZero);
@@ -66,7 +71,8 @@ void GameLayer::initPlayer(){
 
 void GameLayer::initEnemys(){
     //적을 저장할 배열을 생성한다.
-    enemysArray = new CCArray; //CCArray::createWithCapacity(kMaxMonster);
+    enemysArray = CCArray::createWithCapacity(kMaxMonster);
+    enemysArray->retain();
     float width = winSize.width/kMaxMonster;
     for (int i=0; i<kMaxMonster; i++) {
         Enemy *enemy = Enemy::create();
@@ -79,7 +85,8 @@ void GameLayer::initEnemys(){
 #define kMaxBullets 30
 void GameLayer::initBullets(){
     //총알 갯수만큼 배열을 만든다.
-    bulletsArray = new CCArray;//CCArray::createWithCapacity(kMaxBullets);
+    bulletsArray = CCArray::createWithCapacity(kMaxBullets);
+    bulletsArray->retain();
     //총알 갯수만큼 배열에 넣는다.
     for (int i = 0; i < kMaxBullets; i++) {
         //총알 노드 생성
@@ -115,8 +122,8 @@ void GameLayer::update(float delta){
     CCARRAY_FOREACH(enemysArray, object)
     {
         Enemy *enemy = dynamic_cast<Enemy*>(object);
-        
-        if (!enemy->state) {
+        //적이 이미 죽은 상태이면 그냥 넘어간다.
+        if (enemy->state == kDestoryed) {
             continue;
         }
         //총알을 하나 배열에서 꺼낸다
@@ -132,6 +139,7 @@ void GameLayer::update(float delta){
                 //총알을 없애고,
                 bullet->setVisible(false);
                 if (!enemy->attackedWithPoint(bullet->bulletType)) {
+
                     //싸운드 효과를 재생한다.
                     //적이 폭파되면 먼지 뿌려주는 애니메이션
                 }
@@ -149,8 +157,9 @@ void GameLayer::update(float delta){
                 bullet->setVisible(false);
                 bullet->removeFromParentAndCleanup(true);
             }
+//            <#적이 폭발 되면 먼지 뿌리는 애니메이션#>
             
-#pragma mark - 아직 문제 있는지 테스트를 못해봄
+            
             //딜레이를 위한 엑션
             CCDelayTime *delay = CCDelayTime::create(2.0f);//[CCDelayTime actionWithDuration:2.0f];
 
@@ -200,7 +209,6 @@ void GameLayer::onEnter()
 }
 
 
-
 bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     //터치가 시작되면 이전 값과 비교를 위해 저장한다. UI좌표계를 cocos 좌표계로 변환
@@ -233,6 +241,5 @@ void GameLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
 	CCLog("ccTouchCancelled");
 }
-
 
 
