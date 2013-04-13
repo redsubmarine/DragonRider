@@ -7,7 +7,7 @@
 //
 
 #include "Enemy.h"
-
+#include "EnergyGauge.h"
 using namespace cocos2d;
 
 bool Enemy::init(){
@@ -43,8 +43,11 @@ bool Enemy::init(){
     rightEye->setPosition(ccp(60,60));
     this->addChild(rightEye);
     
-    
-    
+    //에너지 게이지 객체를 생성한다
+    gauge = EnergyGauge::energyGaugeWithMaxSize(CCSizeMake(this->boundingBox().size.width, 10), 100);
+    //에너지 게이지를 자식으로 추가
+    this->addChild(gauge);
+
     return true;
 }
 
@@ -71,8 +74,7 @@ void Enemy::update(float delta){
 void Enemy::reset(){
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     //적의 위치를 화면 상단으로 부터 시작한다.
-    this->setVisible(true);
-    state = kNormal;
+
     this->setPosition(ccp( this->getPosition().x, winSize.height + this->boundingBox().size.height / 2 - 1 ));
 	this->setVisible(true);
 	
@@ -106,6 +108,13 @@ void Enemy::reset(){
         default:
             break;
     }
+    //죽어서 안보이던 적을 다시 보여준다.
+    this->setVisible(true);
+    //상태값을 일반 상태로 변경한다.
+    state = kNormal;
+    
+    //게이지 바를 초기화한다.
+    gauge->updateBar(energy);
 }
 
 void Enemy::onEnter(){
@@ -114,13 +123,19 @@ void Enemy::onEnter(){
 }
 
 int Enemy::attackedWithPoint(int point){
+    
+    
     //공격받은 숫자만큼 에너지를 줄인다.
     energy -= point;
+    //게이지 업데이트
+    gauge->updateBar(energy);
     //0 미만이 되면 0을, 아니면 현재 에너지를 반환
     if (energy<=0) {
         //죽으면 숨긴다
         this->destroy();
     }
+    
+    
     return energy;
 }
 

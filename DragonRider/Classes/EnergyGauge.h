@@ -16,6 +16,7 @@ NS_CC_BEGIN
 class EnergyGauge : public::cocos2d::CCNode {
     
     virtual bool init();
+    virtual void draw();
     
 public:
     CREATE_FUNC(EnergyGauge);
@@ -27,7 +28,7 @@ public:
 
     static EnergyGauge* energyGaugeWithMaxSize(CCSize size, CCFloat _maxValue);
     bool initWithMaxSize(CCSize size, CCFloat _maxValue);
-    void updateBar(CCFloat currentValue);
+    void updateBar(CCFloat _currentValue);
 };
 
 

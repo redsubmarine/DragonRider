@@ -21,8 +21,8 @@ typedef enum {
     kDestoryed = 0,
     kNormal = 1
 } State;
-
-
+NS_CC_BEGIN
+class EnergyGauge;
 class Enemy : public::cocos2d::CCSprite {
     
     virtual bool init();
@@ -42,13 +42,15 @@ public:
     CCSprite *leftEye;
     CCSprite *rightEye;
     
+    EnergyGauge *gauge;
+    
     //매서드
     void reset();
     int attackedWithPoint(int point);
     void destroy();
 };
 
-
+NS_CC_END
 #endif /* defined(__DragonRider__Enemy__) */
 
 
