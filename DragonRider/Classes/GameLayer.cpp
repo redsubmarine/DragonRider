@@ -118,7 +118,7 @@ void GameLayer::update(float delta){
     }
 #pragma mark - 여기가 일단 문제
     //플레이어와 캐릭터 충돌을 위해 배열에서 적을 하나 꺼낸다.
-    CCObject *object;
+    CCObject *object = NULL;
     CCARRAY_FOREACH(enemysArray, object)
     {
         Enemy *enemy = dynamic_cast<Enemy*>(object);
@@ -138,7 +138,8 @@ void GameLayer::update(float delta){
             if (!isCollision && bullet->boundingBox().intersectsRect(enemy->boundingBox())) {
                 //총알을 없애고,
                 bullet->setVisible(false);
-                if (!enemy->attackedWithPoint(bullet->bulletType)) {
+                if (!enemy->attackedWithPoint(bullet->bulletType))
+				{
 
                     //싸운드 효과를 재생한다.
                     //적이 폭파되면 먼지 뿌려주는 애니메이션
@@ -178,7 +179,8 @@ void GameLayer::update(float delta){
 void GameLayer::allStop(){
     this->setTouchEnabled(false);
 }
-void GameLayer::block(){
+void GameLayer::block()
+{
     CCDirector::sharedDirector()-> replaceScene(MenuLayer::scene());
 }
 
