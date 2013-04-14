@@ -181,7 +181,7 @@ void GameLayer::update(float delta){
             
             
             //딜레이를 위한 액션
-            CCDelayTime *delay = CCDelayTime::create(2.0f);//[CCDelayTime actionWithDuration:2.0f];
+            CCDelayTime *delay = CCDelayTime::create(2.0f);
 
             CCCallFunc *allStop = CCCallFunc::create(this, callfunc_selector(GameLayer::allStop));
             
@@ -242,7 +242,6 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     //터치가 시작되면 이전 값과 비교를 위해 저장한다. UI좌표계를 cocos 좌표계로 변환
     previousPoint = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
-    //    previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 	return true;
 }
 void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
