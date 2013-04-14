@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F2291BD81719C04300D19C9E /* Dust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2291BD61719C04300D19C9E /* Dust.cpp */; };
+		F2291BDD171A9A2300D19C9E /* mon_damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F2291BDB171A9A2300D19C9E /* mon_damage.mp3 */; };
+		F2291BDE171A9A2300D19C9E /* mon_die.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F2291BDC171A9A2300D19C9E /* mon_die.mp3 */; };
+		F2291BE0171A9B0400D19C9E /* back.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F2291BDF171A9B0400D19C9E /* back.mp3 */; };
 		F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F617174506001293A3 /* Bullet.cpp */; };
 		F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F817174506001293A3 /* Enemy.cpp */; };
 		F2B5D6FE17174506001293A3 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6FA17174506001293A3 /* Player.cpp */; };
@@ -237,6 +240,9 @@
 /* Begin PBXFileReference section */
 		F2291BD61719C04300D19C9E /* Dust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dust.cpp; path = Classes/Dust.cpp; sourceTree = "<group>"; };
 		F2291BD71719C04300D19C9E /* Dust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dust.h; path = Classes/Dust.h; sourceTree = "<group>"; };
+		F2291BDB171A9A2300D19C9E /* mon_damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mon_damage.mp3; path = Resources/mon_damage.mp3; sourceTree = "<group>"; };
+		F2291BDC171A9A2300D19C9E /* mon_die.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = mon_die.mp3; path = Resources/mon_die.mp3; sourceTree = "<group>"; };
+		F2291BDF171A9B0400D19C9E /* back.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = back.mp3; path = Resources/back.mp3; sourceTree = "<group>"; };
 		F2B5D6F617174506001293A3 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = Classes/Bullet.cpp; sourceTree = "<group>"; };
 		F2B5D6F717174506001293A3 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = Classes/Bullet.h; sourceTree = "<group>"; };
 		F2B5D6F817174506001293A3 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Enemy.cpp; sourceTree = "<group>"; };
@@ -793,6 +799,9 @@
 		F2F617D11716A0E900DF6B64 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2291BDF171A9B0400D19C9E /* back.mp3 */,
+				F2291BDB171A9A2300D19C9E /* mon_damage.mp3 */,
+				F2291BDC171A9A2300D19C9E /* mon_die.mp3 */,
 				F2F61AC61716B86000DF6B64 /* dragonRiderSprite.plist */,
 				F2F61AC71716B86000DF6B64 /* dragonRiderSprite.pvr */,
 				F2F61AC41716AECE00DF6B64 /* 01.png */,
@@ -1819,6 +1828,9 @@
 				F2F61AC51716AECE00DF6B64 /* 01.png in Resources */,
 				F2F61AC81716B86000DF6B64 /* dragonRiderSprite.plist in Resources */,
 				F2F61AC91716B86000DF6B64 /* dragonRiderSprite.pvr in Resources */,
+				F2291BDD171A9A2300D19C9E /* mon_damage.mp3 in Resources */,
+				F2291BDE171A9A2300D19C9E /* mon_die.mp3 in Resources */,
+				F2291BE0171A9B0400D19C9E /* back.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

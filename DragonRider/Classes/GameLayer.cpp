@@ -14,6 +14,8 @@
 #include "HUDLayer.h"
 #include "Dust.h"
 
+#include "SimpleAudioEngine.h"
+
 using namespace cocos2d;
 
 bool GameLayer::init(){
@@ -143,12 +145,18 @@ void GameLayer::update(float delta){
                 //미사일로 적을 공격해서 0점을 받아오는지를 체크
                 if (!enemy->attackedWithPoint(bullet->bulletType))
 				{
+                    //총알이 몬스터에 맞을때 싸운드 효과를 재생한다.
+                    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("mon_damage.mp3");
+                    //미사일로 적을 공격해서 0점을 받아오는지를 체크
+                    if (!enemy->attackedWithPoint(bullet->bulletType)){
+                        //싸운드 효과를 재생한다.
+                        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("mon_die.mp3");
+                    }
+                    
                     Dust *dust = Dust::create();
                     dust->setPosition(enemy->getPosition());
                     this->addChild(dust);
                     dust->animateDusts();
-                    //싸운드 효과를 재생한다.
-                    
                 }
             }
         }
@@ -225,6 +233,8 @@ void GameLayer::onEnter()
     //점수를 위한 스케쥴
     this->schedule(schedule_selector(GameLayer::updateScore), 0.01f);
     
+    //시작되면 배경 백그라운드 음악 재생
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("back.mp3", true);
 }
 
 

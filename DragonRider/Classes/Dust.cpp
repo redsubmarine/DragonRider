@@ -87,24 +87,27 @@ void Dust::animateExplosions(){
     CCObject *object;
     CCARRAY_FOREACH(explosions, object){
         CCSprite *explosion = dynamic_cast<CCSprite *>(object);
+        
         //보이게 설정한다
         explosion->setVisible(true);
+        
+        //0.4초동안 3배 커지게 설정
+        CCScaleTo *scale = CCScaleTo::create(0.4, 3);
+        
         //CCCallBlock를 사용할수 없어서 변조함..
-        this->block(explosion);
+        CCCallFuncO *block = CCCallFuncO::create(this, callfuncO_selector(Dust::block), explosion);
+        /*block이라 명명했지만 당연히 block은 아니다*/
+        CCSequence *seq = CCSequence::create(scale, block, NULL);
+        this->runAction(seq);
     }
 }
 
 void Dust::block(CCSprite *explosion){
-    //0.4초동안 3배 커지게 설정
-    CCScaleTo *scale = CCScaleTo::create(0.4, 3);
-    CCSequence *seq = CCSequence::create(scale, NULL);
-    explosion->runAction(seq);
     
     explosion->setVisible(false);
     this->removeFromParentAndCleanup(true);
 }
 
-#warning Block코딩 때문에 버그가 생김
 void Dust::animateDusts(){
     //애니메이션을 위해서 먼지를 세팅
     CCObject *object;
@@ -123,13 +126,17 @@ void Dust::animateDusts(){
         //터지는 y위치를 위해서 랜덤값 1 또는 -1
         int y = ( (double)arc4random()/ (double)0xffffffff)<0.5?-1:1;
         float yRandom = -30 +4*( ((double)arc4random()/ (double) 0xffffffff) *10 *y);
+        
+
         //0.3초 시간동안 위치 변경 애니메이션
         CCMoveTo *move = CCMoveTo::create(0.3, ccp(xRandom, yRandom));
-        //애니메이션이 끝나면 숨기고 자신은 삭제를 위한 함수
-        CCSequence *seq = CCSequence::create(move, NULL);
+        //애니메이션이 끝나면 숨기고 자신은 삭제를 위한 CallBack함수
+        CCCallFuncO *block = CCCallFuncO::create(this, callfuncO_selector(Dust::block2), dust);
+        /*block이라 명명했지만 당연히 block은 아니다*/
+        CCSequence *seq = CCSequence::create(move, block, NULL);
         dust->runAction(scale);
         dust->runAction(seq);
-        this->block2(dust);
+
         
     }
 }

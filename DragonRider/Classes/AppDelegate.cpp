@@ -26,10 +26,17 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
+    // 배경음악을 위한 음악
+    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("back.mp3");
+    // 적이 죽을 경우을 위한 사운드 효과
+    SimpleAudioEngine::sharedEngine()->preloadEffect("mon_die.mp3");
+    // 적이 피해를 입었을 경우을 위한 사운드 효과
+    SimpleAudioEngine::sharedEngine()->preloadEffect("mon_damage.mp3");
+        
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
-//	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(320*2, 568*2, kResolutionShowAll);
+
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
