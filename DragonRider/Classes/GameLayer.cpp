@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "MenuLayer.h"
 #include "HUDLayer.h"
+#include "Dust.h"
 
 using namespace cocos2d;
 
@@ -139,11 +140,15 @@ void GameLayer::update(float delta){
             if (!isCollision && bullet->boundingBox().intersectsRect(enemy->boundingBox())) {
                 //총알을 없애고,
                 bullet->setVisible(false);
+                //미사일로 적을 공격해서 0점을 받아오는지를 체크
                 if (!enemy->attackedWithPoint(bullet->bulletType))
 				{
-
+                    Dust *dust = Dust::create();
+                    dust->setPosition(enemy->getPosition());
+                    this->addChild(dust);
+                    dust->animateDusts();
                     //싸운드 효과를 재생한다.
-                    //적이 폭파되면 먼지 뿌려주는 애니메이션
+                    
                 }
             }
         }
@@ -159,19 +164,24 @@ void GameLayer::update(float delta){
                 bullet->setVisible(false);
                 bullet->removeFromParentAndCleanup(true);
             }
-//            <#적이 폭발 되면 먼지 뿌리는 애니메이션#>
+            
+            Dust *dust = Dust::create();
+            dust->setPosition(player->getPosition());
+            this->addChild(dust, 1000);
+            dust->animateExplosions();
             
             
-            //딜레이를 위한 엑션
+            
+            //딜레이를 위한 액션
             CCDelayTime *delay = CCDelayTime::create(2.0f);//[CCDelayTime actionWithDuration:2.0f];
 
             CCCallFunc *allStop = CCCallFunc::create(this, callfunc_selector(GameLayer::allStop));
             
             CCCallFunc *block = CCCallFunc::create(this, callfunc_selector(GameLayer::block));
             
-            //엑션을 순서대로 준비.
+            //액션을 순서대로 준비.
             CCSequence *seq = CCSequence::create(allStop, delay, block, NULL);
-            //엑션 실행
+            //액션 실행
             this->runAction(seq);
         }
     }

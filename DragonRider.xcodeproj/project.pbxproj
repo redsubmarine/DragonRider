@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2291BD81719C04300D19C9E /* Dust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2291BD61719C04300D19C9E /* Dust.cpp */; };
 		F2B5D6FC17174506001293A3 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F617174506001293A3 /* Bullet.cpp */; };
 		F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6F817174506001293A3 /* Enemy.cpp */; };
 		F2B5D6FE17174506001293A3 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B5D6FA17174506001293A3 /* Player.cpp */; };
@@ -234,6 +235,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2291BD61719C04300D19C9E /* Dust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dust.cpp; path = Classes/Dust.cpp; sourceTree = "<group>"; };
+		F2291BD71719C04300D19C9E /* Dust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dust.h; path = Classes/Dust.h; sourceTree = "<group>"; };
 		F2B5D6F617174506001293A3 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = Classes/Bullet.cpp; sourceTree = "<group>"; };
 		F2B5D6F717174506001293A3 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = Classes/Bullet.h; sourceTree = "<group>"; };
 		F2B5D6F817174506001293A3 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Enemy.cpp; sourceTree = "<group>"; };
@@ -1735,6 +1738,8 @@
 				F2B5D6FA17174506001293A3 /* Player.cpp */,
 				F2B5D6F917174506001293A3 /* Enemy.h */,
 				F2B5D6F817174506001293A3 /* Enemy.cpp */,
+				F2291BD71719C04300D19C9E /* Dust.h */,
+				F2291BD61719C04300D19C9E /* Dust.cpp */,
 				F2D39450171942FB00DD0F6E /* EnergyGauge.h */,
 				F2D3944F171942FB00DD0F6E /* EnergyGauge.cpp */,
 				F2B5D6F717174506001293A3 /* Bullet.h */,
@@ -2019,6 +2024,7 @@
 				F2B5D6FD17174506001293A3 /* Enemy.cpp in Sources */,
 				F2B5D6FE17174506001293A3 /* Player.cpp in Sources */,
 				F2D39451171942FB00DD0F6E /* EnergyGauge.cpp in Sources */,
+				F2291BD81719C04300D19C9E /* Dust.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
