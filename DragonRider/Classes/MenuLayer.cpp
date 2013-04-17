@@ -25,12 +25,21 @@ bool MenuLayer::init(){
     //레이블을 자식으로 추가한다.
     this->addChild(label);
     
-    
-    CCLabelTTF *label2 = CCLabelTTF::create("Made by redsubmarine", "HelveticaNeue", 30);
+    CCLabelTTF *label1 = CCLabelTTF::create("Made by @krazyeom", "HelveticaNeue", 30);
     //레이블의 위치를 지정한다.
-    label2->setPosition(ccp(size.width/2, size.height/2 +60));
+    label1->setPosition(ccp(size.width/2, size.height/2 +30));
+    //레이블을 자식으로 추가한다.
+    this->addChild(label1);
+    
+    CCLabelTTF *label2 = CCLabelTTF::create("Revised by @redsubmarine11", "HelveticaNeue", 25);
+    //레이블의 위치를 지정한다.
+    label2->setPosition(ccp(size.width/2, 100));
     //레이블을 자식으로 추가한다.
     this->addChild(label2);
+    
+    
+
+    
     
     
     //메뉴 아이템 블럭
